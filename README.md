@@ -24,8 +24,9 @@ There are two main call-paths through the default receive function.
 
 In the normal control flow where msg.value is less than or equal to 1 ether and no ether has been deposited by that user in that block, we are safe from reentrancy attacks as there are no external calls in that control path.
 
-In the control flow where msg.value is less than or equal to 1 ether and ether previously deposited in this block by the same user + msg.value would be greater than 1, we have a single external call
+In the control flow where msg.value is less than or equal to 1 ether and ether previously deposited in this block by the same user + msg.value would be greater than 1, we have a single external call. However, we check the successfulness of the call after, meaning it would require an unrealistic amount of eth for the overflow to actually take effect
 
 
 There may potentially be an exploit in the receive() function
+
 Optimise the `receive` function so that it is at least 20% cheaper and send a sample contract showing how the optimisation is done.
